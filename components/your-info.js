@@ -39,6 +39,7 @@ const YourInfo = () => {
               name="full_name"
               placeholder="Full Name"
               autoComplete="off"
+              className={errors.full_name ? "error" : ""}
               {...register("full_name", {
                 required: "This field is required",
                 pattern: {
@@ -56,6 +57,7 @@ const YourInfo = () => {
               name="email_address"
               placeholder="Email Address"
               autoComplete="off"
+              className={errors.email_address ? "error" : ""}
               {...register("email_address", {
                 required: "This field is required",
                 pattern: {
@@ -73,6 +75,7 @@ const YourInfo = () => {
               name="phone_number"
               placeholder="e.g. 0912 345 6789"
               autoComplete="off"
+              className={errors.phone_number ? "error" : ""}
               {...register("phone_number", {
                 required: "This field is required",
                 minLength: {

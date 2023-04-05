@@ -37,6 +37,10 @@
         &:focus {
           border-color: var(--purplish-blue);
         }
+
+        &.error {
+          border-color: var(--strawberry-red);
+        }
       }
     }
   }
