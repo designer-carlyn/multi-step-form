@@ -1,10 +1,26 @@
 .your-info {
   form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
     .form-group {
       margin-bottom: 20px;
+      position: relative;
+
       label {
         color: var(--marine-blue);
         font-weight: 500;
+        margin-right: auto;
+      }
+
+      small {
+        color: var(--strawberry-red);
+        font-weight: 700;
+        position: absolute;
+        right: 0;
+        top: 1px;
+        font-size: 14px;
       }
 
       input {
@@ -12,7 +28,7 @@
         padding: 10px 20px;
         color: var(--marine-blue);
         border: 1px solid var(--cool-gray);
-        border-radius: 10px;
+        border-radius: 8px;
         outline: none;
         font-weight: 700;
         margin-top: 3px;
