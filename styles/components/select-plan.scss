@@ -1,4 +1,63 @@
 .select-plan {
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-gap: 20px;
+
+    .form-group {
+      position: relative;
+      input {
+        cursor: pointer;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        opacity: 0;
+      }
+
+      input:checked ~ .select-plan__form-item {
+        background-color: var(--magnolia);
+        border-color: var(--purplish-blue);
+      }
+
+      input:hover ~ .select-plan__form-item {
+        border-color: var(--purplish-blue);
+      }
+    }
+
+    &-item {
+      border-radius: 8px;
+      border: 1px solid var(--cool-gray);
+      background-color: transparent;
+      padding: 20px 15px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+
+      .item-context {
+        margin-top: 40px;
+        line-height: 1;
+
+        .context-title {
+          font-size: 18px;
+          font-weight: 500;
+          color: var(--marine-blue);
+        }
+
+        .context-price {
+          font-size: 16px;
+          color: var(--cool-gray);
+          margin-top: 5px;
+        }
+      }
+
+      &:hover {
+        border-color: var(--purplish-blue);
+      }
+    }
+  }
 
   .card-bottom {
     display: flex;

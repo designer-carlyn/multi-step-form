@@ -15,7 +15,7 @@ import { INITIAL_STATE, infoReducer } from "@/reducer/info-reducer";
 import { useState, useReducer } from "react";
 
 export default function App({ Component, pageProps }) {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [state, dispatch] = useReducer(infoReducer, INITIAL_STATE);
 
   return (
