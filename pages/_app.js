@@ -5,6 +5,9 @@ import "@/styles/layout/index.scss";
 import "@/styles/helpers/variables.scss";
 import "@/styles/pages/home.scss";
 import "@/styles/components/step-form.scss";
+import "@/styles/components/card.scss";
+import "@/styles/components/button.scss";
+import "@/styles/components/your-info.scss";
 
 export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />;

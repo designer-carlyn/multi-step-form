@@ -1,0 +1,31 @@
+.your-info {
+  form {
+    .form-group {
+      margin-bottom: 20px;
+      label {
+        color: var(--marine-blue);
+        font-weight: 500;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px 20px;
+        color: var(--marine-blue);
+        border: 1px solid var(--cool-gray);
+        border-radius: 10px;
+        outline: none;
+        font-weight: 700;
+        margin-top: 3px;
+        font-size: 18px;
+
+        &:focus {
+          border-color: var(--purplish-blue);
+        }
+      }
+    }
+  }
+
+  .card-bottom {
+    text-align: right;
+  }
+}
