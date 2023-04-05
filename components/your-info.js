@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { StepContext, PersonalInfoContext } from "@/context/data";
 
 const YourInfo = () => {
+  const [step, setStep] = useContext(StepContext);
+  const [state, dispatch] = useContext(PersonalInfoContext);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
-
-  const [personalInfo, setPersonalInfo] = useState({});
+  } = useForm({
+    defaultValues: {
+      full_name: state.personal_info.full_name,
+      email_address: state.personal_info.email_address,
+      phone_number: state.personal_info.phone_number,
+    },
+  });
 
   const onSubmit = (data) => {
-    setPersonalInfo(data);
+    dispatch({ type: "SUBMIT_PERSONAL_INFO", payload: data });
+    setStep(2);
   };
 
   return (

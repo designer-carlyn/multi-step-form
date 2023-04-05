@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StepContext } from "@/context/data";
 
 const SelectPlan = () => {
+  const [step, setStep] = useContext(StepContext);
+
+  const onClickBack = () => {
+    setStep(1);
+  };
+
   return (
     <div className="select-plan card">
       <div className="card-header">
@@ -9,7 +16,9 @@ const SelectPlan = () => {
       </div>
       <div className="card-content"></div>
       <div className="card-bottom">
-        <button className="btn btn-back">Go Back</button>
+        <button className="btn btn-back" onClick={onClickBack}>
+          Go Back
+        </button>
         <button className="btn btn-next">Next Step</button>
       </div>
     </div>

@@ -10,15 +10,19 @@ import "@/styles/components/button.scss";
 import "@/styles/components/your-info.scss";
 import "@/styles/components/select-plan.scss";
 
-import { StepContext } from "@/context/data";
-import { useState } from "react";
+import { StepContext, PersonalInfoContext } from "@/context/data";
+import { INITIAL_STATE, infoReducer } from "@/reducer/info-reducer";
+import { useState, useReducer } from "react";
 
 export default function App({ Component, pageProps }) {
   const [step, setStep] = useState(1);
+  const [state, dispatch] = useReducer(infoReducer, INITIAL_STATE);
 
   return (
     <StepContext.Provider value={[step, setStep]}>
-      <Component {...pageProps} />
+      <PersonalInfoContext.Provider value={[state, dispatch]}>
+        <Component {...pageProps} />
+      </PersonalInfoContext.Provider>
     </StepContext.Provider>
   );
 }
