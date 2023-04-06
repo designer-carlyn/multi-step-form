@@ -1,16 +1,39 @@
-import React, { useContext, useState } from "react";
-import { StepContext } from "@/context/data";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  OptionBillingContext,
+  SelectPlanContext,
+  StepContext,
+} from "@/context/data";
 
 import Image from "next/image";
 
 const SelectPlan = () => {
-  const [price, setPrice] = useState(9);
+  const [toggleBilling, setToggleBilling] = useContext(OptionBillingContext);
+  const [choosePlan, setChoosePlan] = useContext(SelectPlanContext);
+  const [step, setStep] = useContext(StepContext);
 
-  function handleOnChange(event) {
+  const handleOnChangePlan = (event) => {
     let value = event.target.value;
-    setPrice(value);
+    setChoosePlan(parseInt(value));
     console.log(value);
-  }
+  };
+
+  const handleOnChangeBilling = () => {
+    setToggleBilling((toggleBilling) => !toggleBilling);
+    if (!toggleBilling) {
+      setChoosePlan(choosePlan * 10);
+    } else {
+      setChoosePlan(choosePlan / 10);
+    }
+  };
+
+  const nextStep = () => {
+    setStep(3);
+  };
+
+  const goBack = () => {
+    setStep(1);
+  };
 
   return (
     <div className="select-plan card">
@@ -24,9 +47,9 @@ const SelectPlan = () => {
             <input
               type="radio"
               name="radio-plan"
-              value={9}
-              checked={price == "9"}
-              onChange={handleOnChange}
+              value={!toggleBilling ? 9 : 90}
+              checked={choosePlan === 9 || choosePlan === 90}
+              onChange={handleOnChangePlan}
             />
             <div className="select-plan__form-item">
               <div className="item-icon">
@@ -39,7 +62,12 @@ const SelectPlan = () => {
               </div>
               <div className="item-context">
                 <div className="context-title">Arcade</div>
-                <div className="context-price">$9/mo</div>
+                <div className="context-price">
+                  {!toggleBilling ? "$9/mo" : "$90/yr"}
+                </div>
+                {toggleBilling ? (
+                  <div className="context-free">2 months free</div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -47,9 +75,9 @@ const SelectPlan = () => {
             <input
               type="radio"
               name="radio-plan"
-              value={12}
-              checked={price == "12"}
-              onChange={handleOnChange}
+              value={!toggleBilling ? 12 : 120}
+              checked={choosePlan === 12 || choosePlan === 120}
+              onChange={handleOnChangePlan}
             />
             <div className="select-plan__form-item">
               <div className="item-icon">
@@ -62,7 +90,12 @@ const SelectPlan = () => {
               </div>
               <div className="item-context">
                 <div className="context-title">Advanced</div>
-                <div className="context-price">$12/mo</div>
+                <div className="context-price">
+                  {!toggleBilling ? "$12/mo" : "$120/yr"}
+                </div>
+                {toggleBilling ? (
+                  <div className="context-free">2 months free</div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -70,9 +103,9 @@ const SelectPlan = () => {
             <input
               type="radio"
               name="radio-plan"
-              value={15}
-              checked={price == "15"}
-              onChange={handleOnChange}
+              value={!toggleBilling ? 15 : 150}
+              checked={choosePlan === 15 || choosePlan === 150}
+              onChange={handleOnChangePlan}
             />
             <div className="select-plan__form-item">
               <div className="item-icon">
@@ -85,15 +118,41 @@ const SelectPlan = () => {
               </div>
               <div className="item-context">
                 <div className="context-title">Pro</div>
-                <div className="context-price">$15/mo</div>
+                <div className="context-price">
+                  {!toggleBilling ? "$15/mo" : "$150/yr"}
+                </div>
+                {toggleBilling ? (
+                  <div className="context-free">2 months free</div>
+                ) : null}
               </div>
             </div>
           </div>
         </form>
+        <div className="select-plan__toggle">
+          <div className="toggle-form">
+            <span className={`toggle-label ${!toggleBilling ? "active" : ""}`}>
+              Monthly
+            </span>
+            <input
+              className="toggle-checkbox"
+              type="checkbox"
+              checked={toggleBilling}
+              onChange={handleOnChangeBilling}
+            />
+            <div className="toggle-switch"></div>
+            <span className={`toggle-label ${toggleBilling ? "active" : ""}`}>
+              Yearly
+            </span>
+          </div>
+        </div>
       </div>
       <div className="card-bottom">
-        <button className="btn btn-back">Go Back</button>
-        <button className="btn btn-next">Next Step</button>
+        <button className="btn btn-back" onClick={goBack}>
+          Go Back
+        </button>
+        <button className="btn btn-next" onClick={nextStep}>
+          Next Step
+        </button>
       </div>
     </div>
   );

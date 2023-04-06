@@ -10,18 +10,31 @@ import "@/styles/components/button.scss";
 import "@/styles/components/your-info.scss";
 import "@/styles/components/select-plan.scss";
 
-import { StepContext, PersonalInfoContext } from "@/context/data";
+import {
+  StepContext,
+  PersonalInfoContext,
+  OptionBillingContext,
+  SelectPlanContext,
+} from "@/context/data";
 import { INITIAL_STATE, infoReducer } from "@/reducer/info-reducer";
 import { useState, useReducer } from "react";
 
 export default function App({ Component, pageProps }) {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [state, dispatch] = useReducer(infoReducer, INITIAL_STATE);
+  const [toggleBilling, setToggleBilling] = useState(false);
+  const [choosePlan, setChoosePlan] = useState(9);
 
   return (
     <StepContext.Provider value={[step, setStep]}>
       <PersonalInfoContext.Provider value={[state, dispatch]}>
-        <Component {...pageProps} />
+        <OptionBillingContext.Provider
+          value={[toggleBilling, setToggleBilling]}
+        >
+          <SelectPlanContext.Provider value={[choosePlan, setChoosePlan]}>
+            <Component {...pageProps} />
+          </SelectPlanContext.Provider>
+        </OptionBillingContext.Provider>
       </PersonalInfoContext.Provider>
     </StepContext.Provider>
   );
