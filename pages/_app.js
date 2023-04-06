@@ -21,7 +21,7 @@ import { INITIAL_STATE, infoReducer } from "@/reducer/info-reducer";
 import { useState, useReducer } from "react";
 
 export default function App({ Component, pageProps }) {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(3);
   const [state, dispatch] = useReducer(infoReducer, INITIAL_STATE);
   const [toggleBilling, setToggleBilling] = useState(false);
   const [choosePlan, setChoosePlan] = useState({

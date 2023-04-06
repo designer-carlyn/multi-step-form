@@ -19,7 +19,6 @@ const SelectPlan = () => {
       planName: id,
       planPrice: parseInt(value),
     });
-    console.log(value);
   };
 
   const handleOnChangeBilling = () => {
