@@ -14,16 +14,26 @@ const SelectPlan = () => {
 
   const handleOnChangePlan = (event) => {
     let value = event.target.value;
-    setChoosePlan(parseInt(value));
+    let id = event.target.id;
+    setChoosePlan({
+      planName: id,
+      planPrice: parseInt(value),
+    });
     console.log(value);
   };
 
   const handleOnChangeBilling = () => {
     setToggleBilling((toggleBilling) => !toggleBilling);
     if (!toggleBilling) {
-      setChoosePlan(choosePlan * 10);
+      setChoosePlan({
+        planName: choosePlan.planName,
+        planPrice: choosePlan.planPrice * 10,
+      });
     } else {
-      setChoosePlan(choosePlan / 10);
+      setChoosePlan({
+        planName: choosePlan.planName,
+        planPrice: choosePlan.planPrice / 10,
+      });
     }
   };
 
@@ -47,8 +57,11 @@ const SelectPlan = () => {
             <input
               type="radio"
               name="radio-plan"
+              id="Arcade"
               value={!toggleBilling ? 9 : 90}
-              checked={choosePlan === 9 || choosePlan === 90}
+              checked={
+                choosePlan.planPrice === 9 || choosePlan.planPrice === 90
+              }
               onChange={handleOnChangePlan}
             />
             <div className="select-plan__form-item">
@@ -75,15 +88,18 @@ const SelectPlan = () => {
             <input
               type="radio"
               name="radio-plan"
+              id="Advanced"
               value={!toggleBilling ? 12 : 120}
-              checked={choosePlan === 12 || choosePlan === 120}
+              checked={
+                choosePlan.planPrice === 12 || choosePlan.planPrice === 120
+              }
               onChange={handleOnChangePlan}
             />
             <div className="select-plan__form-item">
               <div className="item-icon">
                 <Image
                   src="/static/images/icon-advanced.svg"
-                  alt="Icon Arcade"
+                  alt="Icon Advanced"
                   width={40}
                   height={40}
                 ></Image>
@@ -103,15 +119,18 @@ const SelectPlan = () => {
             <input
               type="radio"
               name="radio-plan"
+              id="Pro"
               value={!toggleBilling ? 15 : 150}
-              checked={choosePlan === 15 || choosePlan === 150}
+              checked={
+                choosePlan.planPrice === 15 || choosePlan.planPrice === 150
+              }
               onChange={handleOnChangePlan}
             />
             <div className="select-plan__form-item">
               <div className="item-icon">
                 <Image
                   src="/static/images/icon-pro.svg"
-                  alt="Icon Arcade"
+                  alt="Icon Pro"
                   width={40}
                   height={40}
                 ></Image>

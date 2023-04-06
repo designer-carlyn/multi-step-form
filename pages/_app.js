@@ -9,6 +9,7 @@ import "@/styles/components/card.scss";
 import "@/styles/components/button.scss";
 import "@/styles/components/your-info.scss";
 import "@/styles/components/select-plan.scss";
+import "@/styles/components/add-ons.scss";
 
 import {
   StepContext,
@@ -20,10 +21,13 @@ import { INITIAL_STATE, infoReducer } from "@/reducer/info-reducer";
 import { useState, useReducer } from "react";
 
 export default function App({ Component, pageProps }) {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [state, dispatch] = useReducer(infoReducer, INITIAL_STATE);
   const [toggleBilling, setToggleBilling] = useState(false);
-  const [choosePlan, setChoosePlan] = useState(9);
+  const [choosePlan, setChoosePlan] = useState({
+    planName: "Arcade",
+    planPrice: 9,
+  });
 
   return (
     <StepContext.Provider value={[step, setStep]}>
