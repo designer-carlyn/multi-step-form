@@ -4,3 +4,4 @@ export const StepContext = createContext();
 export const PersonalInfoContext = createContext();
 export const OptionBillingContext = createContext();
 export const SelectPlanContext = createContext();
+export const PickAddOns = createContext();

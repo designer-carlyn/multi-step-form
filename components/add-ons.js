@@ -1,27 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { OptionBillingContext, PickAddOns, StepContext } from "@/context/data";
 
 const AddOns = () => {
-  const [addOns, setAddOns] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useContext(OptionBillingContext);
+  const [pickAddOns, setPickAddOns] = useContext(PickAddOns);
+  const [step, setStep] = useContext(StepContext);
 
-  function handleChange(event) {
-    let value = event.target.value;
-    let name = event.target.name;
-    let isChecked = event.target.checked;
-    var updateAddOns = [...addOns];
-
-    if (isChecked) {
-      updateAddOns = [
-        ...addOns,
-        {
-          name: name,
-        },
-      ];
-    } else {
-      updateAddOns.splice(addOns.indexOf(name), 1);
-    }
-
-    setAddOns(updateAddOns);
+  function handleChange(index) {
+    setPickAddOns(
+      pickAddOns.map((item, currentIndex) =>
+        currentIndex === index ? { ...item, isChecked: !item.isChecked } : item
+      )
+    );
   }
+
+  const goBack = () => {
+    setStep(2);
+  };
 
   return (
     <div className="add-ons card">
@@ -31,12 +26,36 @@ const AddOns = () => {
       </div>
       <div className="card-content">
         <div className="add-ons__wrapper">
-          <div className="add-ons__wrapper-item">
+          {pickAddOns.map((item, index) => {
+            return (
+              <div className="add-ons__wrapper-item" key={index}>
+                <input
+                  type="checkbox"
+                  value="1"
+                  id="online-service"
+                  name="Online Service"
+                  checked={item.isChecked}
+                  onChange={() => handleChange(index)}
+                />
+                <div className="checkbox-content">
+                  <div className="item-checkbox"></div>
+                  <div className="item-context">
+                    <p>{item.name}</p>
+                    <p>{item.description}</p>
+                  </div>
+                  <div className="item-price">
+                    +${item.value}/{!selectedPlan ? "mo" : "yr"}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          {/* <div className="add-ons__wrapper-item">
             <input
               type="checkbox"
               value="1"
+              id="online-service"
               name="Online Service"
-              onChange={handleChange}
             />
             <div className="checkbox-content">
               <div className="item-checkbox"></div>
@@ -46,29 +65,13 @@ const AddOns = () => {
               </div>
               <div className="item-price">+$1/mo</div>
             </div>
-          </div>
-        </div>
-        <div className="add-ons__wrapper">
-          <div className="add-ons__wrapper-item">
-            <input
-              type="checkbox"
-              value="2"
-              name="Larger Storage"
-              onChange={handleChange}
-            />
-            <div className="checkbox-content">
-              <div className="item-checkbox"></div>
-              <div className="item-context">
-                <p>Larger Storage</p>
-                <p>Extra 1TB of cloud save</p>
-              </div>
-              <div className="item-price">+$2/mo</div>
-            </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="card-bottom">
-        <button className="btn btn-back">Go Back</button>
+        <button className="btn btn-back" onClick={goBack}>
+          Go Back
+        </button>
         <button className="btn btn-next">Next Step</button>
       </div>
     </div>

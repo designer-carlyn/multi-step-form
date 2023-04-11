@@ -16,14 +16,21 @@ import {
   PersonalInfoContext,
   OptionBillingContext,
   SelectPlanContext,
+  PickAddOns,
 } from "@/context/data";
 import { INITIAL_STATE, infoReducer } from "@/reducer/info-reducer";
+import { ADD_ONS_INITIAL_STATE } from "@/config";
 import { useState, useReducer } from "react";
 
 export default function App({ Component, pageProps }) {
   const [step, setStep] = useState(3);
   const [state, dispatch] = useReducer(infoReducer, INITIAL_STATE);
   const [toggleBilling, setToggleBilling] = useState(false);
+  const [pickAddOns, setPickAddOns] = useState(
+    !toggleBilling
+      ? ADD_ONS_INITIAL_STATE.monthly
+      : ADD_ONS_INITIAL_STATE.yearly
+  );
   const [choosePlan, setChoosePlan] = useState({
     planName: "Arcade",
     planPrice: 9,
@@ -36,7 +43,9 @@ export default function App({ Component, pageProps }) {
           value={[toggleBilling, setToggleBilling]}
         >
           <SelectPlanContext.Provider value={[choosePlan, setChoosePlan]}>
-            <Component {...pageProps} />
+            <PickAddOns.Provider value={[pickAddOns, setPickAddOns]}>
+              <Component {...pageProps} />
+            </PickAddOns.Provider>
           </SelectPlanContext.Provider>
         </OptionBillingContext.Provider>
       </PersonalInfoContext.Provider>
