@@ -3,6 +3,7 @@ import {
   OptionBillingContext,
   SelectPlanContext,
   StepContext,
+  PickAddOns,
 } from "@/context/data";
 
 import Image from "next/image";
@@ -10,6 +11,7 @@ import Image from "next/image";
 const SelectPlan = () => {
   const [toggleBilling, setToggleBilling] = useContext(OptionBillingContext);
   const [choosePlan, setChoosePlan] = useContext(SelectPlanContext);
+  const [pickAddOns, setPickAddOns] = useContext(PickAddOns);
   const [step, setStep] = useContext(StepContext);
 
   const handleOnChangePlan = (event) => {
@@ -28,11 +30,28 @@ const SelectPlan = () => {
         planName: choosePlan.planName,
         planPrice: choosePlan.planPrice * 10,
       });
+      setPickAddOns(
+        pickAddOns.map((item) => {
+          return {
+            ...item,
+            value: item.value * 10,
+          };
+        })
+      );
     } else {
       setChoosePlan({
         planName: choosePlan.planName,
         planPrice: choosePlan.planPrice / 10,
       });
+
+      setPickAddOns(
+        pickAddOns.map((item) => {
+          return {
+            ...item,
+            value: item.value / 10,
+          };
+        })
+      );
     }
   };
 

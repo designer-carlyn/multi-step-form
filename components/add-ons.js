@@ -23,32 +23,6 @@ const AddOns = () => {
     setStep(2);
   };
 
-  useEffect(() => {
-    if (selectedPlan) {
-      setPickAddOns(
-        pickAddOns.map((item) => {
-          return {
-            ...item,
-            value: item.value * 10,
-          };
-        })
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      setPickAddOns(
-        pickAddOns.map((item) => {
-          return {
-            ...item,
-            value: item.value,
-          };
-        })
-      );
-    };
-  }, []);
-
   return (
     <div className="add-ons card">
       <div className="card-header">
