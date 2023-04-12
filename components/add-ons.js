@@ -9,7 +9,12 @@ const AddOns = () => {
   function handleChange(index) {
     setPickAddOns(
       pickAddOns.map((item, currentIndex) =>
-        currentIndex === index ? { ...item, isChecked: !item.isChecked } : item
+        currentIndex === index
+          ? {
+              ...item,
+              isChecked: !item.isChecked,
+            }
+          : item
       )
     );
   }
@@ -17,6 +22,32 @@ const AddOns = () => {
   const goBack = () => {
     setStep(2);
   };
+
+  useEffect(() => {
+    if (selectedPlan) {
+      setPickAddOns(
+        pickAddOns.map((item) => {
+          return {
+            ...item,
+            value: item.value * 10,
+          };
+        })
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      setPickAddOns(
+        pickAddOns.map((item) => {
+          return {
+            ...item,
+            value: item.value,
+          };
+        })
+      );
+    };
+  }, []);
 
   return (
     <div className="add-ons card">

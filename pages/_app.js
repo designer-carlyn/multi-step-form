@@ -26,11 +26,7 @@ export default function App({ Component, pageProps }) {
   const [step, setStep] = useState(3);
   const [state, dispatch] = useReducer(infoReducer, INITIAL_STATE);
   const [toggleBilling, setToggleBilling] = useState(false);
-  const [pickAddOns, setPickAddOns] = useState(
-    !toggleBilling
-      ? ADD_ONS_INITIAL_STATE.monthly
-      : ADD_ONS_INITIAL_STATE.yearly
-  );
+  const [pickAddOns, setPickAddOns] = useState(ADD_ONS_INITIAL_STATE);
   const [choosePlan, setChoosePlan] = useState({
     planName: "Arcade",
     planPrice: 9,
