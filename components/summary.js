@@ -64,20 +64,24 @@ const Summary = () => {
             </div>
           </div>
           <div className="summary__wrapper-addons">
-            {filteredAddOns.map((item, index) => {
-              return (
-                <div className="addons-item" key={index}>
-                  <h4>{item.name}</h4>
-                  <h4>
-                    +${item.value}/{!optionBilling ? "mo" : "yr"}
-                  </h4>
-                </div>
-              );
-            })}
+            {filteredAddOns.length !== 0 ? (
+              filteredAddOns.map((item, index) => {
+                return (
+                  <div className="addons-item" key={index}>
+                    <h4>{item.name}</h4>
+                    <h4>
+                      +${item.value}/{!optionBilling ? "mo" : "yr"}
+                    </h4>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="addons-empty">No Add-ons selected</div>
+            )}
           </div>
         </div>
         <div className="summary__total">
-          <h4>Total (per month)</h4>
+          <h4>Total (per {!optionBilling ? "month" : "year"})</h4>
           <h2>
             +${totalBill}/{!optionBilling ? "mo" : "yr"}
           </h2>
