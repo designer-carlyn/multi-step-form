@@ -1,0 +1,22 @@
+.confirmation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper {
+    text-align: center;
+
+    img {
+      margin: auto;
+    }
+
+    h1 {
+      color: var(--marine-blue);
+      margin: 25px 0 10px;
+    }
+
+    p {
+      color: var(--cool-gray);
+    }
+  }
+}

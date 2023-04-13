@@ -5,6 +5,7 @@ import YourInfo from "@/components/your-info";
 import SelectPlan from "@/components/select-plan";
 import AddOns from "@/components/add-ons";
 import Summary from "@/components/summary";
+import Confirmation from "@/components/confirmation";
 
 import StepForm from "@/components/step-form";
 
@@ -20,6 +21,7 @@ export default function Home() {
           {step === 2 ? <SelectPlan></SelectPlan> : null}
           {step === 3 ? <AddOns></AddOns> : null}
           {step === 4 ? <Summary></Summary> : null}
+          {step === 0 ? <Confirmation></Confirmation> : null}
         </div>
       </div>
     </main>

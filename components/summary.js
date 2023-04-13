@@ -33,6 +33,10 @@ const Summary = () => {
     };
   }, []);
 
+  const confirmSummary = () => {
+    setStep(0);
+  };
+
   const goBack = () => {
     setStep(3);
   };
@@ -91,7 +95,9 @@ const Summary = () => {
         <button className="btn btn-back" onClick={goBack}>
           Go Back
         </button>
-        <button className="btn btn-confirm">Confirm</button>
+        <button className="btn btn-confirm" onClick={confirmSummary}>
+          Confirm
+        </button>
       </div>
     </div>
   );

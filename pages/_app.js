@@ -11,6 +11,7 @@ import "@/styles/components/your-info.scss";
 import "@/styles/components/select-plan.scss";
 import "@/styles/components/add-ons.scss";
 import "@/styles/components/summary.scss";
+import "@/styles/components/confirmation.scss";
 
 import {
   StepContext,
@@ -24,7 +25,7 @@ import { ADD_ONS_INITIAL_STATE } from "@/config";
 import { useState, useReducer } from "react";
 
 export default function App({ Component, pageProps }) {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [state, dispatch] = useReducer(infoReducer, INITIAL_STATE);
   const [toggleBilling, setToggleBilling] = useState(false);
   const [pickAddOns, setPickAddOns] = useState(ADD_ONS_INITIAL_STATE);

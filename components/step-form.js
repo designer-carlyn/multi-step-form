@@ -28,7 +28,11 @@ const StepForm = () => {
         </div>
       </div>
       <div className="step-info">
-        <div className={`info-number ${step === 4 ? "active" : ""}`}>4</div>
+        <div
+          className={`info-number ${step === 4 || step === 0 ? "active" : ""}`}
+        >
+          4
+        </div>
         <div className="info-context">
           <div className="context-step">Step 4</div>
           <div className="context-title">Summary</div>
