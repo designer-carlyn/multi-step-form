@@ -63,6 +63,18 @@
         border-color: var(--purplish-blue);
       }
     }
+
+    @media screen and (max-width: 425px) {
+      grid-template-columns: 1fr;
+      &-item {
+        display: flex;
+        grid-gap: 15px;
+
+        .item-context {
+          margin-top: 0;
+        }
+      }
+    }
   }
 
   &__toggle {

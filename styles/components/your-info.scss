@@ -42,6 +42,12 @@
           border-color: var(--strawberry-red);
         }
       }
+
+      @media screen and (max-width: 425px) {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 

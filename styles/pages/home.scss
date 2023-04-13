@@ -16,4 +16,24 @@
     grid-template-columns: auto 1fr;
     box-shadow: 0px 0px 29px -6px rgba(0,0,0,0.1);
   }
+
+  @media screen and (max-width: 425px) {
+    align-items: flex-start;
+
+    &__form {
+      grid-template-columns: 1fr;
+      padding: 0;
+      box-shadow: none;
+      background-color: transparent;
+    }
+
+    .info-container {
+      margin: 0 20px;
+      box-shadow: 0px 0px 29px -6px rgba(0,0,0,0.1);
+      background-color: var(--white);
+      border-radius: 10px;
+      margin-top: -70px;
+      min-height: 475px;
+    }
+  }
 }

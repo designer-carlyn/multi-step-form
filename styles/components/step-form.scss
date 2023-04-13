@@ -53,4 +53,27 @@
       }
     }
   }
+
+  @media screen and (max-width: 425px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-gap: 20px;
+    width: 100%;
+    background: url(../../public/static/images/bg-sidebar-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0;
+    height: 180px;
+    padding: 40px 20px 0;
+
+    .step-info {
+      margin-bottom: 0;
+      display: block;
+    }
+
+    .info-context {
+      display: none;
+    }
+  }
 }
