@@ -19,6 +19,10 @@ const AddOns = () => {
     );
   }
 
+  const nextStep = () => {
+    setStep(4);
+  };
+
   const goBack = () => {
     setStep(2);
   };
@@ -77,7 +81,9 @@ const AddOns = () => {
         <button className="btn btn-back" onClick={goBack}>
           Go Back
         </button>
-        <button className="btn btn-next">Next Step</button>
+        <button className="btn btn-next" onClick={nextStep}>
+          Next Step
+        </button>
       </div>
     </div>
   );

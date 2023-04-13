@@ -4,6 +4,7 @@ import { StepContext } from "@/context/data";
 import YourInfo from "@/components/your-info";
 import SelectPlan from "@/components/select-plan";
 import AddOns from "@/components/add-ons";
+import Summary from "@/components/summary";
 
 import StepForm from "@/components/step-form";
 
@@ -18,6 +19,7 @@ export default function Home() {
           {step === 1 ? <YourInfo></YourInfo> : null}
           {step === 2 ? <SelectPlan></SelectPlan> : null}
           {step === 3 ? <AddOns></AddOns> : null}
+          {step === 4 ? <Summary></Summary> : null}
         </div>
       </div>
     </main>
